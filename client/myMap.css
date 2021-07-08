@@ -1,0 +1,4 @@
+/* tạo style cho thẻ div có id là mapid, 100vh => chiều cao là 100% màn hình */
+#mapid {
+    height: 100vh; 
+}
