@@ -14,13 +14,193 @@
 
     <!-- load file css -->
     <link rel="stylesheet" href="./myMap.css">
+    <!-- load fontawesome -->
+    <link rel="stylesheet" type="text/css" href="../font-awesome/css/all.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 </head>
-<title>My Map</title>
+<title>EcoMAP</title>
 
 <body>
-    <!-- tạo một thẻ div có id là mapid để Leaflet map render vào, xem code trong file myMap.js -->
-    <div id="mapid"></div>
+    <div>
 
+        <!-- HEADER -->
+        <nav id="navbar" class="p-3 bg-dark text-white">
+            <div class="container">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a id="logo" href="/"
+                        class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <img src="../images/logo.png" height=45px style="margin-top: -30px;">
+                        <p
+                            style="font-family: p-2 text-white; font-size: 30px; margin-top: -5px; color: #FFC107; font-family:Verdana, Geneva, Tahoma, sans-serif;">
+                            <b>EcoMAP</b>
+                        </p>
+                    </a>
+                    <ul id="menu" class="menu col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+                        style="padding-bottom: 65px; margin-top: -12px;">
+                        <li><a href="#" class="nav-link px-2 text-white" style="border-left: 1px solid turquoise;">Địa điểm du lịch</a>
+                            <ul class="submenu">
+                                <li><a href="#" >Hotel</a></li>
+                                <li><a href="#">Homestay</a></li>
+                                <li><a href="#">Coffee store</a></li>
+                                <li><a href="#">Điểm thuê xe gắn máy</a></li>
+                                <li><a href="#">Điểm cấm trại</a></li>
+                                <li><a href="#">Quán ăn</a></li>
+                                <li><a href="#">Khu bảo tồn</a></li>
+                                <li><a href="#">Di tích lịch sử</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="nav-link px-2 text-white">Địa điểm mới</a>
+                            <ul class="submenu">
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="nav-link px-2 text-white">Vấn đề môi trường</a>
+                            <ul class="submenu">
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                                <li><a href="#">Đang cập nhật...</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form id="search" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" style="height: 30px;" class="form-control form-control-dark"
+                            placeholder="Tìm kiếm..." aria-label="Tìm kiếm">
+                    </form>
+
+                    <div class="text-end">
+                        <button type="button" style="height: 30px;" class="btn btn-outline-light me-2">
+                            <p style="margin-top: -4.5px;">VN</p>
+                        </button>
+                        <button type="button" style="height: 30px; width: 115px;" class="btn btn-warning">
+                            <i id="earth" class="fas fa-globe-asia"></i>
+                            <p style="margin-top: -4.5px; text-align: right;">TP. Đà Lạt</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+           <!-- OPTION 2 -->
+        <div>
+            <div class="d-flex flex-column flex-shrink-0 bg-light" style="width: 4.5rem;">
+                <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                    <li class="nav-item">
+                        <a href="#box1" class="nav-link py-3 border-bottom" aria-current="page" title="Home"
+                            data-toggle="collapse" data-placement="right">
+                            <button aria-current="page" class="boxnoidung" data-toggle="collapse" data-target="#box1">
+                                <i class="fas fa-layer-group" style="color: #13795B;"></i>
+                            </button>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom" title="Dashboard" data-bs-toggle="tooltip"
+                            data-bs-placement="right">
+                            <i class="fas fa-search" style="color: #13795B;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom" title="Orders" data-bs-toggle="tooltip"
+                            data-bs-placement="right">
+                            <i class="fas fa-chart-bar" style="color: #13795B;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom" title="Products" data-bs-toggle="tooltip"
+                            data-bs-placement="right">
+                            <i class="fas fa-project-diagram" style="color: #13795B;"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link py-3 border-bottom" title="Customers" data-bs-toggle="tooltip"
+                            data-bs-placement="right">
+                            <i class="fas fa-comment-dots" style="color: #13795B;"></i>
+                        </a>
+                    </li>
+                </ul>
+                <div class="dropdown border-top">
+                </div>
+            </div>
+        </div>
+
+        <!-- tạo một thẻ div có id là mapid để Leaflet map render vào, xem code trong file myMap.js -->
+        <div id="mapid"></div>
+
+        <!-- OPTION 3 -->
+        <div class="option3">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px;">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32">
+                        <use xlink:href="#bootstrap" />
+                    </svg>
+                    <span class="fs-4">Sidebar</span>
+                </a>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#home" />
+                            </svg>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#speedometer2" />
+                            </svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#table" />
+                            </svg>
+                            Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#grid" />
+                            </svg>
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <svg class="bi me-2" width="16" height="16">
+                                <use xlink:href="#people-circle" />
+                            </svg>
+                            Customers
+                        </a>
+                    </li>
+                </ul>
+                <hr>
+            </div>
+        </div>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+            integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+            crossorigin="anonymous"></script>
 </body>
 
 <!-- load file js -->

@@ -74,7 +74,7 @@ var data = [
 //     // thì những dòng code bên dưới này nó cũng chạy, 
 //     console.log('làm biếng đợi data quá, tao chạy trước đây')
 // }
-
+/*
 const getData =  async  () =>l {
     var url = 'http://localhost:3000/getAQI';
 
@@ -89,7 +89,7 @@ const getData =  async  () =>l {
 
 
 getData();
-
+*/
 
 // var themTramDo = function () {
 //     var url = 'http://localhost:3000/themTramDo';
